@@ -1,30 +1,36 @@
 #include<iostream>
 using namespace std;
 
-class box {
-    //private:
-        double l, b, h; // Private member variables
-
-    //public:
-        // Declare calculatevol as a friend function
-        friend double calculatevol(const box& b);
-
-        // Declare insertdetails as a friend function to set the private members
-        friend void insertdetails(box& b, double l, double b1, double h1);
+class bankaccount {
+    private:
+        String n;
+        double b;
+    public:
+        friend void deposit(bankaccount& ba,double amt);
+        friend void withdraw(bankaccount& ba,double amt);
+        friend void showdetails(bankaccount& ba, String n1,double b1);
 };
-
-// Friend function to set the private members
-void insertdetails(box& b, double l1, double b1, double h1) {
-    b.l = l1;   // Set the private member l
-    b.b = b1;   // Set the private member b
-    b.h = h1;   // Set the private member h
+void deposit(bankaccount& ba,double amt){
+		if(amt>0){
+			balance+=amt;
+			cout<<"deposited balance:- "<<amt<<"\nbalance in acc:- "<<balance<<endl;
+		}
+		else{
+			cout<<"invalid amount"<<endl;
+		}
+	}
+void withdraw(bankaccount& ba,float amt){
+		if(amt>0 && amt<=balance){
+			balance-=amt;
+			cout<<"withdrawn balance:- "<<amt<<"\nbalance in acc:- "<<balance<<endl;
+		}
+		else{
+			cout<<"invalid amount"<<endl;
+		}
+	}
+void showdetails(bankaccount& ba, String n1,double b1){
+	
 }
-
-// Friend function to calculate the volume of the box
-double calculatevol(const box& b) {
-    return b.l * b.b * b.h; // Return the volume of the box
-}
-
 int main() {
     box b1, b2; // Create two box objects
     double l, b, h, v; // Variables to store length, breadth, height, and volume
